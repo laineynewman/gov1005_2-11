@@ -13,6 +13,7 @@ library(janitor)
 
 x <- read_excel(path = "class_enrollment_summary_by_term_2.11.20.xlsx", skip =3) %>%
   clean_names() %>%
+  filter(! is.na(course.name))
   na.omit()
 
 ```
@@ -23,7 +24,7 @@ x <- read_excel(path = "class_enrollment_summary_by_term_2.11.20.xlsx", skip =3)
 
 x %>%
   filter(course_department == "Government") %>%
-  arrange(desc(total)) %>%
-  slice(1)
+  arrange(desc(u_grad)) %>%
+  slice(1:5)
 
 ```
