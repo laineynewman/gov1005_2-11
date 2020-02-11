@@ -1,0 +1,29 @@
+---
+title: "2-11 class"
+author: "Lainey Newman"
+date: "2/11/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(readxl)
+library(janitor)
+
+x <- read_excel(path = "class_enrollment_summary_by_term_2.11.20.xlsx", skip =3) %>%
+  clean_names() %>%
+  na.omit()
+
+```
+
+## R Markdown
+
+```{r}
+
+x %>%
+  filter(course_department == "Government") %>%
+  arrange(desc(total)) %>%
+  slice(1)
+
+```
